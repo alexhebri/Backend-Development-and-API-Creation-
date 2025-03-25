@@ -10,10 +10,10 @@ const posts = require('./routes/api/posts');
 const db = require('./config/keys.js').mongoURI;
 
 //conectare la baza de date
-mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected...'))
-  .catch(err => console.log(err));  
-
+mongoose
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -24,9 +24,11 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
+const port = process.env.PORT || 5000;
 
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+
+app.listen(5000, () => {
+  console.log('Server is running on http://localhost:5000');
 });
 
 // npm run server
