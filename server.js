@@ -59,10 +59,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// DB Config
+// DB
 const db = require('./config/keys').mongoURI;
 
-// Connect to MongoDB
+// Connect MongoDB
 mongoose
   .connect(db)
   .then(() => console.log('MongoDB Connected'))
@@ -74,7 +74,7 @@ app.use(passport.initialize());
 // Passport Config
 require('./config/passport')(passport);
 
-// Use Routes
+// Routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
