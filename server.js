@@ -54,15 +54,13 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
 const app = express();
-
-// Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB
 const db = require('./config/keys').mongoURI;
 
-// Connect MongoDB
+// Connectare
 mongoose
   .connect(db)
   .then(() => console.log('MongoDB Connected'))
@@ -71,7 +69,7 @@ mongoose
 // Passport middleware
 app.use(passport.initialize());
 
-// Passport Config
+
 require('./config/passport')(passport);
 
 // Routes
